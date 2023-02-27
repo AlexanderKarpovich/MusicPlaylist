@@ -16,8 +16,14 @@ namespace Playlist
         /// the specified <see cref="IEnumerable{Song}" /> to the <see cref="MusicPlaylist.Songs" /> property.
         /// </summary>
         /// <param name="songs">The <see cref="IEnumerable{Song}" /> whose elements are copied to the <see cref="MusicPlaylist.Songs" /> property.</param>
+        /// <exception cref="ArgumentException"><paramref name="songs" /> is <see langword="null" />.</exception>
         public MusicPlaylist(IEnumerable<Song> songs)
         {
+            if (songs is null)
+            {
+                throw new ArgumentException("The songs collection is null.");
+            }
+
             Songs = new CircularLinkedList<Song>(songs);
             CurrentSong = Songs.First();
             Playtime = 0;
