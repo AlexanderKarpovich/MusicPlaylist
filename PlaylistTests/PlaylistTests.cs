@@ -113,5 +113,16 @@ namespace PlaylistTests
             // Assert
             Assert.Equal(0, playlist.Playtime);
         }
+
+        [Fact]
+        public void CreatingPlaylistWithSongsEqualsToNull_ShouldThrowException()
+        {
+            // Arrange
+            Action action = () => new MusicPlaylist(null!);
+            Type exceptionType = typeof(ArgumentNullException);
+
+            // Act & Assert
+            Assert.Throws(exceptionType, action);
+        }
     }
 }
