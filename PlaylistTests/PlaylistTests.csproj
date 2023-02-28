@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Playlist\Playlist.csproj" />
+    <ProjectReference Include="..\PlaylistApi\PlaylistApi.csproj" />
   </ItemGroup>
 
 </Project>

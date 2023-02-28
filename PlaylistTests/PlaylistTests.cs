@@ -1,10 +1,10 @@
-using Playlist;
+using PlaylistApi.Models;
 
 namespace PlaylistTests
 {
     public class PlaylistTests
     {
-        private MusicPlaylist playlist;
+        private Playlist playlist;
 
         public PlaylistTests()
         {
@@ -15,7 +15,7 @@ namespace PlaylistTests
                 new Song() { Name = "The Beach", Author = "The Neighbourhood", Duration = 255 },
             };
 
-            playlist = new MusicPlaylist(songs);
+            playlist = new Playlist(songs);
         }
 
         [Fact]
@@ -118,7 +118,7 @@ namespace PlaylistTests
         public void CreatingPlaylistWithSongsEqualsToNull_ShouldThrowException()
         {
             // Arrange
-            Action action = () => new MusicPlaylist(null!);
+            Action action = () => new Playlist(null!);
             Type exceptionType = typeof(ArgumentNullException);
 
             // Act & Assert
