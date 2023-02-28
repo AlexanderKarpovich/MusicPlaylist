@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PlaylistApi.Data;
+using PlaylistApi.Models;
 using PlaylistApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,6 +20,8 @@ builder.Services.AddDbContext<PlaylistDbContext>(options =>
 
 // Adding repository implementation for IPlaylistRepository dependency request
 builder.Services.AddScoped<IPlaylistRepository, PlaylistRepository>();
+
+builder.Services.AddSingleton(PlaylistFactory.CreatePlaylist);
 
 builder.Services.AddGrpc();
 
