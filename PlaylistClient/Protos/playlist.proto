@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+option csharp_namespace = "PlaylistApi";
+
+service PlaylistService {
+    rpc GetAllSongs(EmptyRequest) returns (GetAllResponse);
+    rpc GetSongById(GetByIdRequest) returns (SongResponse);
+    rpc CreateSong(CreateSongRequest) returns (SongResponse);
+    rpc UpdateSong(UpdateSongRequest) returns (EmptyResponse);
+    rpc DeleteSong(DeleteSongRequest) returns (EmptyResponse);
+    
+    rpc Play(EmptyRequest) returns (SongResponse);
+    rpc Pause(EmptyRequest) returns (SongResponse);
+    rpc Next(EmptyRequest) returns (SongResponse);
+    rpc Prev(EmptyRequest) returns (SongResponse);
+    rpc AddSong(CreateSongRequest) returns (GetAllResponse);
+}
+
+message EmptyRequest {}
+message EmptyResponse {}
+
+message GetByIdRequest {
+    int32 id = 1;
+}
+
+message CreateSongRequest {
+    string name = 1;
+    string author = 2;
+    string duration = 3;
+}
+
+message UpdateSongRequest {
+    int32 id = 1;
+    string name = 2;
+    string author = 3;
+    string duration = 4;
+}
+
+message DeleteSongRequest {
+    int32 id = 1;
+}
+
+message SongRequest {
+    int32 id = 1;
+    string name = 2;
+    string author = 3;
+    int32 duration = 4; 
+}
+
+message GetAllResponse {
+    repeated SongResponse Songs = 1;
+}
+
+message SongResponse {
+    int32 id = 1;
+    string name = 2;
+    string author = 3;
+    int32 duration = 4;
+}
