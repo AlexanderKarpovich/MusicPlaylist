@@ -82,6 +82,11 @@ namespace PlaylistApi.Controllers
                 return NotFound();
             }
 
+            if (playlist.CurrentSong.Equals(song) && playlist.IsPlaying)
+            {
+                return BadRequest("Cannot delete currently playing song.");
+            }
+
             repository.RemoveSong(id);
             repository.SaveChanges();
             return Ok();
