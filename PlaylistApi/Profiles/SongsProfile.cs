@@ -1,5 +1,5 @@
 using AutoMapper;
-using Playlist;
+using PlaylistApi.Models;
 
 namespace PlaylistApi.Profiles
 {

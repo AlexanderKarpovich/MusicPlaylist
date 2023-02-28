@@ -1,4 +1,4 @@
-namespace Playlist
+namespace PlaylistApi.Models
 {
     /// <summary>
     /// Represents playlist interface.

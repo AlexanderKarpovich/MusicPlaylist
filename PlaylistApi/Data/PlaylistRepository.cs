@@ -1,4 +1,4 @@
-using Playlist;
+using PlaylistApi.Models;
 
 namespace PlaylistApi.Data
 {

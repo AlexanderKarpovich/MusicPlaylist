@@ -1,7 +1,7 @@
 using AutoMapper;
 using Grpc.Core;
-using Playlist;
 using PlaylistApi.Data;
+using PlaylistApi.Models;
 
 namespace PlaylistApi.Services
 {
@@ -9,14 +9,14 @@ namespace PlaylistApi.Services
     {
         private readonly IPlaylistRepository repository;
         private readonly IMapper mapper;
-        private readonly MusicPlaylist playlist;
+        private readonly Playlist playlist;
 
         public GrpcPlaylistService(IPlaylistRepository repository, IMapper mapper)
         {
             this.repository = repository;
             this.mapper = mapper;
 
-            playlist = new MusicPlaylist(repository.GetAllSongs());
+            playlist = new Playlist(repository.GetAllSongs());
         }
 
         public override Task<GetAllResponse> GetAllSongs(EmptyRequest request, ServerCallContext context)

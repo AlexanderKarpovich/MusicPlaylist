@@ -26,10 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Playlist\Playlist.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Protobuf Include="Protos\playlist.proto" GrpcServices="Server" />
   </ItemGroup>
 

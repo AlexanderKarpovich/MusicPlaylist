@@ -1,23 +1,23 @@
-using Playlist.Data;
+using PlaylistApi.Models.DataStructures;
 
-namespace Playlist
+namespace PlaylistApi.Models
 {
     /// <summary>
     /// Represents music playlist containing songs to play.
     /// </summary>
-    public class MusicPlaylist : IPlaylist, IDisposable
+    public class Playlist : IPlaylist, IDisposable
     {
         private readonly Task playTask;
         private readonly CancellationTokenSource tokenSource;
         private readonly CancellationToken cancellationToken;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MusicPlaylist" /> class that contains elements copied from
-        /// the specified <see cref="IEnumerable{Song}" /> to the <see cref="MusicPlaylist.Songs" /> property.
+        /// Initializes a new instance of the <see cref="Playlist" /> class that contains elements copied from
+        /// the specified <see cref="IEnumerable{Song}" /> to the <see cref="Playlist.Songs" /> property.
         /// </summary>
-        /// <param name="songs">The <see cref="IEnumerable{Song}" /> whose elements are copied to the <see cref="MusicPlaylist.Songs" /> property.</param>
+        /// <param name="songs">The <see cref="IEnumerable{Song}" /> whose elements are copied to the <see cref="Playlist.Songs" /> property.</param>
         /// <exception cref="ArgumentNullException"><paramref name="songs" /> is <see langword="null" />.</exception>
-        public MusicPlaylist(IEnumerable<Song> songs)
+        public Playlist(IEnumerable<Song> songs)
         {
             if (songs is null)
             {
@@ -101,7 +101,7 @@ namespace Playlist
         }
 
         /// <summary>
-        /// Plays the <see cref="MusicPlaylist.CurrentSong" /> asynchronously.
+        /// Plays the <see cref="Playlist.CurrentSong" /> asynchronously.
         /// </summary>
         /// <returns>The task object representing the asynchronous operation.</returns>
         private async Task PlaySong()

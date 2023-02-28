@@ -1,4 +1,4 @@
-namespace Playlist.Data
+namespace PlaylistApi.Models.DataStructures
 {
     /// <summary>
     /// Represents a node in a <see cref="CircularLinkedList{T}" />. This class cannot be inherited.

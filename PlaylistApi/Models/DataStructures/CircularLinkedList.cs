@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace Playlist.Data
+namespace PlaylistApi.Models.DataStructures
 {
     /// <summary>
     /// Represents a circular doubly linked list.
