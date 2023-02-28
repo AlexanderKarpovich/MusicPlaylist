@@ -1,6 +1,6 @@
-Playlist/obj/
-Playlist/bin/
 PlaylistTests/bin
 PlaylistTests/obj
 PlaylistApi/bin
 PlaylistApi/obj
+PlaylistClient/bin
+PlaylistClient/obj
