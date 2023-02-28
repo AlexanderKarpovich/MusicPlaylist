@@ -21,7 +21,7 @@ namespace Playlist
         {
             if (songs is null)
             {
-                throw new ArgumentNullException("The songs collection is null.");
+                throw new ArgumentNullException("songs");
             }
 
             Songs = new CircularLinkedList<Song>(songs);

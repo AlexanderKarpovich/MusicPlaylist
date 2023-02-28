@@ -29,7 +29,7 @@ namespace Playlist.Data
         {
             if (data is null)
             {
-                throw new ArgumentNullException("Data is null.");
+                throw new ArgumentNullException("data");
             }
 
             foreach (T item in data)
