@@ -9,14 +9,13 @@ namespace PlaylistApi.Services
     {
         private readonly IPlaylistRepository repository;
         private readonly IMapper mapper;
-        private readonly Playlist playlist;
+        private readonly IPlaylist playlist;
 
-        public GrpcPlaylistService(IPlaylistRepository repository, IMapper mapper)
+        public GrpcPlaylistService(IPlaylistRepository repository, IMapper mapper, IPlaylist playlist)
         {
+            this.playlist = playlist;
             this.repository = repository;
             this.mapper = mapper;
-
-            playlist = new Playlist(repository.GetAllSongs());
         }
 
         public override Task<GetAllResponse> GetAllSongs(EmptyRequest request, ServerCallContext context)
