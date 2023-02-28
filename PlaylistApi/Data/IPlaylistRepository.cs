@@ -40,6 +40,14 @@ namespace PlaylistApi.Data
         bool UpdateSong(Song song);
 
         /// <summary>
+        /// Indicates whether the song with specific <paramref name="id" /> exists.
+        /// </summary>
+        /// <param name="id">Specified primary key value.</param>
+        /// <returns><see langword="true" /> if the <see cref="Song" /> object exists in repository; 
+        /// otherwise - <see langword="false" /></returns>
+        bool SongExists(int id);
+
+        /// <summary>
         /// Removes <see cref="Song" /> exemplar from repository by specified <paramref name="id" /> value.
         /// </summary>
         /// <param name="id">Specified primary key value.</param>
