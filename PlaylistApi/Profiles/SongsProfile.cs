@@ -1,6 +1,5 @@
 using AutoMapper;
 using Playlist;
-using PlaylistApi.Dtos;
 
 namespace PlaylistApi.Profiles
 {
@@ -9,8 +8,9 @@ namespace PlaylistApi.Profiles
         public SongsProfile()
         {
             // Source -> Target
-            CreateMap<Song, SongReadDto>(); 
-            CreateMap<SongCreateDto, Song>();
+            CreateMap<Song, SongResponse>();
+            CreateMap<CreateSongRequest, Song>();
+            CreateMap<UpdateSongRequest, Song>();
         }
     }
 }
