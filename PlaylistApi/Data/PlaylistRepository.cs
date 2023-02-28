@@ -2,10 +2,17 @@ using Playlist;
 
 namespace PlaylistApi.Data
 {
+    /// <summary>
+    /// Represents repository with main CRUD operations for playlist.
+    /// </summary>
     public class PlaylistRepository : IPlaylistRepository
     {
         private readonly PlaylistDbContext context;
 
+        /// <summary>
+        /// Initializes new <see cref="PlaylistRepository" /> instance with given <paramref name="context" />.
+        /// </summary>
+        /// <param name="context">Specified <see cref="PlaylistDbContext" /> exemplar.</param>
         public PlaylistRepository(PlaylistDbContext context)
         {
             this.context = context;
