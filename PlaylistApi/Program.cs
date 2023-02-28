@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PlaylistApi.Data;
+using PlaylistApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,8 @@ builder.Services.AddDbContext<PlaylistDbContext>(options =>
 // Adding repository implementation for IPlaylistRepository dependency request
 builder.Services.AddScoped<IPlaylistRepository, PlaylistRepository>();
 
+builder.Services.AddGrpc();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -30,6 +33,7 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapGrpcService<GrpcPlaylistService>();
 
 // Populate database data
 SeedData.EnsurePopulated(app);
