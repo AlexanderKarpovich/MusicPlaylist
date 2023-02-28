@@ -7,6 +7,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Add db context to the services container
 builder.Services.AddDbContext<PlaylistDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("PlaylistDbConnection"));
@@ -23,5 +24,8 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Populate database data
+SeedData.EnsurePopulated(app);
 
 app.Run();
