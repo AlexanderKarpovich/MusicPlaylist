@@ -41,6 +41,7 @@ namespace Playlist
         public CircularLinkedList<Song> Songs { get; }
         public Song CurrentSong { get; private set; }
         public int Playtime { get; private set; }
+        public bool IsPlaying { get; private set; }
 
         public async Task Play()
         {
@@ -93,6 +94,7 @@ namespace Playlist
         /// <returns>The task object representing the asynchronous operation.</returns>
         private async Task PlaySong()
         {
+            IsPlaying = true;
             while (!cancellationToken.IsCancellationRequested)
             {
                 if (Playtime >= CurrentSong?.Duration)
@@ -103,6 +105,7 @@ namespace Playlist
                 await Task.Delay(1000);
                 Playtime++;
             }
+            IsPlaying = false;
         }
     }
 }
