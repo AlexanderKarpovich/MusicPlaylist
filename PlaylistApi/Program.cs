@@ -13,6 +13,9 @@ builder.Services.AddDbContext<PlaylistDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("PlaylistDbConnection"));
 });
 
+// Adding repository implementation for IPlaylistRepository dependency request
+builder.Services.AddScoped<IPlaylistRepository, PlaylistRepository>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
