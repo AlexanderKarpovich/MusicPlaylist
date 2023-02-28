@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  playlistapi:
+    image: alexanderkarpovich/playlistapi
+    container_name: playlistapi-service
+    build:
+      context: .
+      dockerfile: PlaylistApi/Dockerfile
+  playlistclient:
+    image: alexanderkarpovich/playlistclient
+    container_name: playlistclient-service
+    build:
+      context: .
+      dockerfile: PlaylistClient/Dockerfile
+  sqlserver:
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    container_name: sqlserver
