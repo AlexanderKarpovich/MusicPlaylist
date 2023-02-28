@@ -39,8 +39,20 @@ namespace Playlist
         /// </summary>
         /// <value><see cref="CircularLinkedList{T}" /></value>
         public CircularLinkedList<Song> Songs { get; }
+        /// <summary>
+        /// Current song in playlist.
+        /// </summary>
+        /// <value><see cref="Song" /></value>
         public Song CurrentSong { get; private set; }
+        /// <summary>
+        /// <see cref="CurrentSong" /> playtime.
+        /// </summary>
+        /// <value><see cref="int" /></value>
         public int Playtime { get; private set; }
+        /// <summary>
+        /// Indicates whether the <see cref="CurrentSong" /> playing or not.
+        /// </summary>
+        /// <value><see cref="bool" /></value>
         public bool IsPlaying { get; private set; }
 
         public async Task Play()
