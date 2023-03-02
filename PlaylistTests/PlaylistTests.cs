@@ -11,7 +11,7 @@ namespace PlaylistTests
         {
             songs = new Song[]
             {
-                new Song() { Name = "Gila", Author = "Beach House", Duration = 2 },
+                new Song() { Name = "Gila", Author = "Beach House", Duration = 3 },
                 new Song() { Name = "Call Across Rooms", Author = "Grouper", Duration = 5 },
                 new Song() { Name = "The Beach", Author = "The Neighbourhood", Duration = 6 },
             };
@@ -129,6 +129,7 @@ namespace PlaylistTests
             Assert.True(playlist.Songs.FindNode(secondSong) is not null);
         }
 
+        [Fact]
         public async Task PlaySong_IsPlayingShouldReturnTrue()
         {
             // Act
@@ -141,6 +142,7 @@ namespace PlaylistTests
             playlist.Pause();
         }
 
+        [Fact]
         public async Task PlaySongThenStop_IsPlayingShouldReturnFalse()
         {
             // Act
@@ -156,14 +158,13 @@ namespace PlaylistTests
         {
             // Act
             await playlist.Play();
-
             // 100 milliseconds added to increase the playtime counter
             await Task.Delay(2100);
 
-            playlist.Pause();
-
             // Assert
             Assert.Equal(2, playlist.Playtime);
+
+            playlist.Pause();
         }
 
         [Fact]
@@ -171,6 +172,7 @@ namespace PlaylistTests
         {
             // Act
             await playlist.Play();
+            // 100 milliseconds added to increase the playtime counter
             await Task.Delay(2100);
 
             await playlist.Next();
@@ -184,6 +186,7 @@ namespace PlaylistTests
         {
             // Act
             await playlist.Play();
+            // 100 milliseconds added to increase the playtime counter
             await Task.Delay(2100);
 
             await playlist.Prev();
