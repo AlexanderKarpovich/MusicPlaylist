@@ -129,6 +129,28 @@ namespace PlaylistTests
             Assert.True(playlist.Songs.FindNode(secondSong) is not null);
         }
 
+        public async Task PlaySong_IsPlayingShouldReturnTrue()
+        {
+            // Act
+            await playlist.Play();
+
+            // Assert
+            Assert.True(playlist.IsPlaying);
+
+            // Release resources
+            playlist.Pause();
+        }
+
+        public async Task PlaySongThenStop_IsPlayingShouldReturnFalse()
+        {
+            // Act
+            await playlist.Play();
+            playlist.Pause();
+
+            // Assert
+            Assert.False(playlist.IsPlaying);
+        }
+
         [Fact]
         public async Task PlayForTwoSeconds_PlaytimeShouldReturnTwo()
         {
