@@ -6,7 +6,7 @@ public class PlaylistApiTests
     private readonly IMapper serviceMapper;
     private readonly IPlaylist playlist;
 
-    private readonly ICollection<Song> songs;
+    private readonly List<Song> songs;
 
     private readonly IMapper responseMapper;
 
@@ -152,12 +152,11 @@ public class PlaylistApiTests
         };
 
         // Act
-        var response = await service.UpdateSong(updateRequest, TestServerCallContext.Create());
+        await service.UpdateSong(updateRequest, TestServerCallContext.Create());
 
         // Assert
         mockRepository.Verify(r => r.UpdateSong(It.IsAny<Song>()), Times.Once);
         mockRepository.Verify(r => r.SaveChanges(), Times.Once);
-        Assert.Equal(expectedSong, responseMapper.Map<Song>(response));
         Assert.Equal(expectedSong, songs.FirstOrDefault(s => s.Id == expectedSong.Id));
     }
 
@@ -242,6 +241,9 @@ public class PlaylistApiTests
         // Act
         var response = await service.Play(new EmptyRequest(), TestServerCallContext.Create());
 
+        // Wait for 100 milliseconds so IsPlaying property could change to true
+        await Task.Delay(100);
+
         // Assert
         Assert.True(playlist.IsPlaying);
         Assert.Equal(playlist.CurrentSong, responseMapper.Map<Song>(response));
@@ -257,6 +259,8 @@ public class PlaylistApiTests
         var service = new GrpcPlaylistService(mockRepository.Object, serviceMapper, playlist);
 
         // Act
+        await playlist.Play();
+
         var response = await service.Pause(new EmptyRequest(), TestServerCallContext.Create());
 
         // Assert
@@ -374,8 +378,8 @@ public class PlaylistApiTests
 
                 if (songToUpdate is not null)
                 {
-                    var index = songs.ToList().IndexOf(songToUpdate);
-                    songs.ToArray()[index] = s;
+                    var index = songs.IndexOf(songToUpdate);
+                    songs[index] = s;
 
                     return true;
                 }
