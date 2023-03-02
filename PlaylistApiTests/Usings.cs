@@ -1,1 +1,11 @@
 global using Xunit;
+global using PlaylistApiTests.Helpers;
+global using PlaylistApiTests.Profiles;
+global using Grpc.Core;
+global using Moq;
+global using PlaylistApi.Data;
+global using PlaylistApi.Models;
+global using PlaylistApi.Services;
+global using PlaylistApi.Profiles;
+global using PlaylistApi;
+global using AutoMapper;
