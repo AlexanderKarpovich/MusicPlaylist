@@ -50,6 +50,7 @@ namespace PlaylistApi.Models
         public void Pause()
         {
             tokenSource.Cancel();
+            IsPlaying = false;
         }
 
         public async Task Prev()
