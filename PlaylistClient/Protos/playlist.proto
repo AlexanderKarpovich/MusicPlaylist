@@ -26,14 +26,14 @@ message GetByIdRequest {
 message CreateSongRequest {
     string name = 1;
     string author = 2;
-    string duration = 3;
+    int32 duration = 3;
 }
 
 message UpdateSongRequest {
     int32 id = 1;
     string name = 2;
     string author = 3;
-    string duration = 4;
+    int32 duration = 4;
 }
 
 message DeleteSongRequest {
